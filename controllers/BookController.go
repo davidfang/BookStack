@@ -890,15 +890,19 @@ func (this *BookController) GitPull() {
 	if book.BookId == 0 {
 		this.JsonResult(1, "导入失败，只有项目创建人才有权限导入项目")
 	}
+	beego.Notice("====1111111111111111111111111111111111===========")
 	//GitHub项目链接
 	link := this.GetString("link")
 	go func() {
 		folder := "store/" + identify
+		beego.Notice("===================================")
 		err := utils.GitClone(link, folder)
+		beego.Notice("===============err====================")
+		beego.Error(err.Error())
 		if err != nil {
 			this.JsonResult(1, err.Error())
 		}
-		this.loadByFolder(book.BookId, identify, folder)
+		// this.loadByFolder(book.BookId, identify, folder)
 	}()
 
 	this.JsonResult(0, "提交成功，请耐心等待。")
@@ -1097,6 +1101,7 @@ func (this *BookController) loadByFolder(bookId int, identify, folder string) {
 						mdCont = "[TOC]\r\n\r\n" + mdCont
 					}
 					htmlStr := mdtil.Md2html(mdCont)
+					doc.Release = htmlStr
 					doc.DocumentName = utils.ParseTitleFromMdHtml(htmlStr)
 					doc.BookId = bookId
 					//文档标识
@@ -1110,7 +1115,7 @@ func (this *BookController) loadByFolder(bookId int, identify, folder string) {
 						if err := ModelStore.InsertOrUpdate(models.DocumentStore{
 							DocumentId: int(docId),
 							Markdown:   mdCont,
-							Content:    "",
+							Content:    htmlStr,
 						}, "markdown", "content"); err != nil {
 							beego.Error(err)
 						}

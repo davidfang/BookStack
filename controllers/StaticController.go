@@ -76,6 +76,10 @@ func (this *StaticController) ProjectsFile() {
 		}
 		this.Redirect(staticDomain+"/"+object, 302)
 	} else { //local
-		this.Abort("404")
+		file := this.GetString(":splat")
+		file = strings.TrimLeft(file, "./")
+		path := filepath.Join("uploads",prefix, file)
+		http.ServeFile(this.Ctx.ResponseWriter, this.Ctx.Request, path)
+		//this.Abort("404")
 	}
 }

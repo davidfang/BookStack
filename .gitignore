@@ -25,6 +25,7 @@ test/
 *.test
 *.prof
 .idea
+.vscode
 /conf/app.conf
 *.log
 logs/*
