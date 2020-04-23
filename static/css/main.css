@@ -652,7 +652,7 @@ a{color: #333}
     display: -webkit-box;
     margin-top: 10px;
     -webkit-line-clamp:2;
-    line-height: 180%;
+  /*  line-height: 180%; */
     -webkit-box-orient:vertical;
     overflow: hidden;
     text-overflow: ellipsis;

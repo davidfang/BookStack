@@ -890,14 +890,11 @@ func (this *BookController) GitPull() {
 	if book.BookId == 0 {
 		this.JsonResult(1, "导入失败，只有项目创建人才有权限导入项目")
 	}
-	beego.Notice("====1111111111111111111111111111111111===========")
 	//GitHub项目链接
 	link := this.GetString("link")
 	go func() {
 		folder := "store/" + identify
-		beego.Notice("===================================")
 		err := utils.GitClone(link, folder)
-		beego.Notice("===============err====================")
 		beego.Error(err.Error())
 		if err != nil {
 			this.JsonResult(1, err.Error())
