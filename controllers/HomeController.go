@@ -82,22 +82,34 @@ func (this *HomeController) Index() {
 	this.Data["Tab"] = tab
 	this.Data["Lang"] = lang
 	title := this.Sitename
-
+	keywords := ""
 	desc := this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。"
 	if cid > 0 {
 		title = "[发现] " + cate.Title + " - " + tabName[tab] + " - " + title
 		if strings.TrimSpace(cate.Intro) != "" {
 			desc = cate.Title + "，" + cate.Intro + " - " + this.Sitename
 		}
+		//处理关键字
+		for _, item := range cates {
+			if item.Pid == cid { //有子分类，关键字设置为子分类
+				keywords += item.Title + "," 
+			}
+		}
+		if keywords == "" { //本来就是二级分类，用下面的书做子分类
+			for _, item := range books {
+				keywords += item.BookName + ","
+			}
+		}
 	} else {
 		title = "探索，发现新世界，畅想新知识 - " + this.Sitename
+		keywords = "文档托管,在线创作,文档在线管理,在线知识管理,文档托管平台,在线写书,文档在线转换,在线编辑,在线阅读,开发手册,api手册,文档在线学习,技术文档,在线编辑"
 	}
 
 	this.Data["Cate"] = cate
 
 	this.GetSeoByPage("index", map[string]string{
 		"title":       title,
-		"keywords":    "文档托管,在线创作,文档在线管理,在线知识管理,文档托管平台,在线写书,文档在线转换,在线编辑,在线阅读,开发手册,api手册,文档在线学习,技术文档,在线编辑",
+		"keywords":    keywords,
 		"description": desc,
 	})
 }
