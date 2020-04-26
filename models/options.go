@@ -290,6 +290,17 @@ func (m *Option) Init() error {
 			OptionName:  "FORBIDDEN_REFERER",
 			OptionTitle: "禁止的Referer",
 		},
+
+		{
+			OptionValue: "程序员互联网开源编程书籍免费阅读",
+			OptionName:  "SITE_DESCRIPTION",
+			OptionTitle: "网站description",
+		},
+		{
+			OptionValue: "文档托管,在线创作,文档在线管理,在线知识管理,文档托管平台,在线写书,文档在线转换,在线编辑,在线阅读,开发手册,api手册,文档在线学习,技术文档,在线编辑",
+			OptionName:  "SITE_KEYWORDS",
+			OptionTitle: "网站keywords",
+		},
 	}
 
 	for _, op := range options {

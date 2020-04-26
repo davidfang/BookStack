@@ -61,7 +61,7 @@ func (this *LabelController) Index() {
 	this.GetSeoByPage("label_list", map[string]string{
 		"title":       "[标签]" + labelName,
 		"keywords":    "标签," + labelName,
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 }
 
@@ -89,7 +89,7 @@ func (this *LabelController) List() {
 	this.GetSeoByPage("label_list", map[string]string{
 		"title":       "标签",
 		"keywords":    "标签",
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 
 }

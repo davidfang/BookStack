@@ -45,7 +45,7 @@ func (this *ManagerController) Index() {
 	this.GetSeoByPage("manage_dashboard", map[string]string{
 		"title":       "仪表盘 - " + this.Sitename,
 		"keywords":    "仪表盘",
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 	this.Data["IsDashboard"] = true
 }
@@ -63,7 +63,7 @@ func (this *ManagerController) Users() {
 	this.GetSeoByPage("manage_users", map[string]string{
 		"title":       "用户管理 - " + this.Sitename,
 		"keywords":    "用户管理",
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 
 	members, totalCount, err := models.NewMember().FindToPager(pageIndex, conf.PageSize, wd, role)
@@ -299,7 +299,7 @@ func (this *ManagerController) EditMember() {
 	this.GetSeoByPage("manage_users_edit", map[string]string{
 		"title":       "用户编辑 - " + this.Sitename,
 		"keywords":    "用户标记",
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 	this.Data["IsUsers"] = true
 	this.Data["Model"] = member
@@ -360,7 +360,7 @@ func (this *ManagerController) Books() {
 	this.GetSeoByPage("manage_project_list", map[string]string{
 		"title":       "项目管理 - " + this.Sitename,
 		"keywords":    "项目管理",
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 	this.Data["Private"] = private
 	this.TplName = "manager/books.html"
@@ -437,7 +437,7 @@ func (this *ManagerController) EditBook() {
 	this.GetSeoByPage("manage_project_edit", map[string]string{
 		"title":       "项目设置 - " + this.Sitename,
 		"keywords":    "项目设置",
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 	this.TplName = "manager/edit_book.html"
 }

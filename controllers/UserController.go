@@ -59,7 +59,7 @@ func (this *UserController) Index() {
 	this.GetSeoByPage("ucenter-share", map[string]string{
 		"title":       "分享 - " + this.UcenterMember.Nickname,
 		"keywords":    "用户主页," + this.UcenterMember.Nickname,
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 
 	this.TplName = "user/index.html"
@@ -86,7 +86,7 @@ func (this *UserController) Collection() {
 	this.GetSeoByPage("ucenter-collection", map[string]string{
 		"title":       "收藏 - " + this.UcenterMember.Nickname,
 		"keywords":    "用户收藏," + this.UcenterMember.Nickname,
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 	this.Data["Total"] = totalCount
 	this.Data["Tab"] = "collection"
@@ -110,7 +110,7 @@ func (this *UserController) Follow() {
 	this.GetSeoByPage("ucenter-follow", map[string]string{
 		"title":       "关注 - " + this.UcenterMember.Nickname,
 		"keywords":    "用户关注," + this.UcenterMember.Nickname,
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 	this.Data["Fans"] = fans
 	this.Data["Tab"] = "follow"
@@ -134,7 +134,7 @@ func (this *UserController) Fans() {
 	this.GetSeoByPage("ucenter-fans", map[string]string{
 		"title":       "粉丝 - " + this.UcenterMember.Nickname,
 		"keywords":    "用户粉丝," + this.UcenterMember.Nickname,
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 	this.Data["Fans"] = fans
 	this.Data["Tab"] = "fans"

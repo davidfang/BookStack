@@ -302,7 +302,7 @@ func (this *AccountController) Login() {
 	this.GetSeoByPage("login", map[string]string{
 		"title":       "登录 - " + this.Sitename,
 		"keywords":    "登录," + this.Sitename,
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 }
 
@@ -488,7 +488,7 @@ func (this *AccountController) FindPassword() {
 	this.GetSeoByPage("findpwd", map[string]string{
 		"title":       "找回密码 - " + this.Sitename,
 		"keywords":    "找回密码",
-		"description": this.Sitename + "专注于文档在线写作、协作、分享、阅读与托管，让每个人更方便地发布、分享和获得知识。",
+		"description": this.Sitename + this.Option["SITE_DESCRIPTION"],
 	})
 
 	token := this.GetString("token")
