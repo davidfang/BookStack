@@ -140,7 +140,7 @@ func SitemapUpdate(domain string) {
 			for _, book := range books {
 				su = append(su, sitemap.SitemapUrl{
 					Loc:        domain + beego.URLFor("DocumentController.Index", ":key", book.Identify),
-					Lastmod:    book.ReleaseTime.Format("2006-01-02 15:04:05"),
+					Lastmod:    book.ReleaseTime.Format("2006-01-02"),
 					ChangeFreq: sitemap.WEEKLY,
 					Priority:   0.9,
 				})
@@ -167,7 +167,7 @@ func SitemapUpdate(domain string) {
 				}
 				su = append(su, sitemap.SitemapUrl{
 					Loc:        domain + beego.URLFor("DocumentController.Read", ":key", bookIdentify, ":id", url.QueryEscape(doc.Identify)),
-					Lastmod:    doc.ModifyTime.Format("2006-01-02 15:04:05"),
+					Lastmod:    doc.ModifyTime.Format("2006-01-02"),
 					ChangeFreq: sitemap.WEEKLY,
 					Priority:   0.9,
 				})
@@ -181,7 +181,7 @@ func SitemapUpdate(domain string) {
 		for _, f := range files {
 			si = append(si, sitemap.SitemapIndex{
 				Loc:     domain + "/" + f,
-				Lastmod: time.Now().Format("2006-01-02 15:04:05"),
+				Lastmod: time.Now().Format("2006-01-02"),
 			})
 		}
 
