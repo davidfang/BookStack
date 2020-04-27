@@ -14,7 +14,7 @@ var (
 )
 
 func initAPI() {
-	staticDomain = strings.TrimRight(beego.AppConfig.DefaultString("static_domain", "http://static.sikerdi.com/"), "/") + "/"
+	staticDomain = strings.TrimRight(beego.AppConfig.DefaultString("static_domain", "https://www.sikerdi.com/"), "/") + "/"
 }
 
 func GetAPIStaticDomain() string {
