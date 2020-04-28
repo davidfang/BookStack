@@ -85,9 +85,9 @@ func (this *HomeController) Index() {
 	keywords := ""
 	desc := this.Sitename + this.Option["SITE_DESCRIPTION"]
 	if cid > 0 {
-		title = "[发现] " + cate.Title + " - " + tabName[tab] + " - " + title
+		title = "[发现] " + cate.Title + "教程 - " + tabName[tab] + " - " + title
 		if strings.TrimSpace(cate.Intro) != "" {
-			desc = cate.Title + "，" + cate.Intro + " - " + this.Sitename
+			desc = cate.Title + "教程，" + cate.Intro + " - " + this.Sitename
 		}
 		//处理关键字
 		for _, item := range cates {
@@ -100,6 +100,7 @@ func (this *HomeController) Index() {
 				keywords += item.BookName + ","
 			}
 		}
+		keywords = cate.Title + "教程," + keywords
 	} else {
 		title = "探索，发现新世界，畅想新知识 - " + this.Sitename
 		keywords = this.Option["SITE_KEYWORDS"]
