@@ -237,9 +237,9 @@ func (this *BaseController) BaseUrl() string {
 		if strings.HasPrefix(host, "http://") || strings.HasPrefix(host, "https://") {
 			return host
 		}
-		return this.Ctx.Input.Scheme() + "://" + host
+		return "https" + "://" + host
 	}
-	return this.Ctx.Input.Scheme() + "://" + this.Ctx.Request.Host
+	return "https" + "://" + this.Ctx.Request.Host
 }
 
 //显示错误信息页面.
